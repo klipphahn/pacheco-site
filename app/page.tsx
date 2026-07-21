@@ -90,13 +90,11 @@ export default function Home() {
     <main>
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Root to Rise Therapy home">
-          <span className="brand-mark" aria-hidden="true">
-            <span />
-          </span>
-          <span className="brand-copy">
-            <strong>Root to Rise</strong>
-            <small>Therapy</small>
-          </span>
+          <img
+            className="brand-logo"
+            src="/brand/root-to-rise-logo.png"
+            alt="Root to Rise Marriage Family Therapy Inc."
+          />
         </a>
 
         <nav className="desktop-nav" aria-label="Primary navigation">
@@ -342,9 +340,12 @@ export default function Home() {
       </section>
 
       <footer>
-        <a className="brand footer-brand" href="#top">
-          <span className="brand-mark" aria-hidden="true"><span /></span>
-          <span className="brand-copy"><strong>Root to Rise</strong><small>Therapy</small></span>
+        <a className="brand footer-brand" href="#top" aria-label="Back to the top">
+          <img
+            className="brand-logo"
+            src="/brand/root-to-rise-logo.png"
+            alt="Root to Rise Marriage Family Therapy Inc."
+          />
         </a>
         <p>Compassionate care for children, teens, adults, couples, and families.</p>
         <div className="footer-links">

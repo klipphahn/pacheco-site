@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
     "www.roottorise-therapy.net";
   const protocol = requestHeaders.get("x-forwarded-proto") ?? "https";
   const baseUrl = new URL(`${protocol}://${host}`);
-  const title = "Root to Rise Therapy | Compassionate Care in Modesto";
+  const title = "Root to Rise Marriage Family Therapy | Modesto, CA";
   const description =
     "Evidence-based therapy for children, teens, adults, couples, and families in Stanislaus and San Joaquin Counties.";
 
