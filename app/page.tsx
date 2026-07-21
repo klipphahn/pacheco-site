@@ -69,6 +69,18 @@ const approaches = [
   "Trauma-Focused CBT",
 ];
 
+const officePhotos = [
+  { src: "/office/office-counseling-room-1.jpg", alt: "Comfortable therapy room with a leather sofa, armchairs, and ocean artwork" },
+  { src: "/office/office-counseling-room-2.jpg", alt: "Warm therapy room with leather chairs, plants, and colorful artwork" },
+  { src: "/office/office-counseling-room-3.jpg", alt: "Inviting therapy room with a green sofa, soft lighting, and nature artwork" },
+  { src: "/office/office-counseling-room-4.jpg", alt: "Spacious counseling room arranged for comfortable conversation" },
+  { src: "/office/office-counseling-room-5.jpg", alt: "Sunlit counseling room with a sofa, armchair, plants, and a desk" },
+  { src: "/office/office-counseling-room-6.jpg", alt: "Private therapy office with natural light and comfortable seating" },
+  { src: "/office/office-waiting-area.jpg", alt: "Root to Rise Therapy waiting area with orange chairs, plants, and nature artwork" },
+  { src: "/office/office-hallway.jpg", alt: "Bright hallway leading to private therapy offices" },
+  { src: "/office/office-reception-area.jpg", alt: "Welcoming reception area with comfortable seating and warm fall colors" },
+];
+
 function Arrow() {
   return <span aria-hidden="true">↗</span>;
 }
@@ -90,6 +102,7 @@ export default function Home() {
         <nav className="desktop-nav" aria-label="Primary navigation">
           <a href="#care">How we help</a>
           <a href="#therapists">Our therapists</a>
+          <a href="#office">Our space</a>
           <a href="#approach">Our approach</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -103,6 +116,7 @@ export default function Home() {
           <nav aria-label="Mobile navigation">
             <a href="#care">How we help</a>
             <a href="#therapists">Our therapists</a>
+            <a href="#office">Our space</a>
             <a href="#approach">Our approach</a>
             <a href="#contact">Contact</a>
             <a href={bookingUrl}>Book online</a>
@@ -185,6 +199,32 @@ export default function Home() {
             “Every person deserves care that honors their dignity and makes
             room for meaningful change.”
           </blockquote>
+        </div>
+      </section>
+
+      <section className="office-section" id="office">
+        <div className="section-heading office-heading">
+          <div>
+            <p className="eyebrow">Step inside</p>
+            <h2>A space designed for comfort.</h2>
+          </div>
+          <p>
+            Warm, private rooms with thoughtful details—created to help you
+            settle in, feel at ease, and focus on what matters.
+          </p>
+        </div>
+        <div className="office-gallery">
+          {officePhotos.map((photo, index) => (
+            <a
+              className="office-photo"
+              href={photo.src}
+              key={photo.src}
+              aria-label={`View office photo ${index + 1} full size`}
+            >
+              <img src={photo.src} alt={photo.alt} loading="lazy" />
+              <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+            </a>
+          ))}
         </div>
       </section>
 

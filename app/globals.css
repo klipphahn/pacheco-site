@@ -581,10 +581,77 @@ blockquote {
   padding-left: 24px;
 }
 
+.office-section,
 .therapists-section,
 .process-section,
 .faq-section {
   padding: clamp(80px, 9vw, 140px) clamp(24px, 6vw, 96px);
+}
+
+.office-section {
+  background: #f4f7f3;
+}
+
+.office-heading {
+  margin-bottom: 50px;
+}
+
+.office-heading > p {
+  line-height: 1.75;
+}
+
+.office-gallery {
+  display: grid;
+  gap: 16px;
+  grid-auto-flow: dense;
+  grid-auto-rows: 255px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.office-photo {
+  background: var(--mist);
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.office-photo:first-child {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.office-photo img {
+  height: 100%;
+  object-fit: cover;
+  transition: filter 300ms ease, transform 500ms ease;
+  width: 100%;
+}
+
+.office-photo > span {
+  align-items: center;
+  background: rgba(251, 252, 248, 0.92);
+  bottom: 14px;
+  display: flex;
+  font-size: 0.61rem;
+  font-weight: 750;
+  height: 38px;
+  justify-content: center;
+  letter-spacing: 0.14em;
+  position: absolute;
+  right: 14px;
+  width: 38px;
+}
+
+.office-photo:hover img,
+.office-photo:focus-visible img {
+  filter: saturate(1.06) contrast(1.02);
+  transform: scale(1.025);
+}
+
+.office-photo:focus-visible {
+  outline: 3px solid var(--terracotta);
+  outline-offset: 4px;
 }
 
 .section-heading {
@@ -892,6 +959,7 @@ footer > p {
   .hero-copy { padding-right: 34px; }
   .care-section { grid-template-columns: repeat(3, 1fr); }
   .care-intro { grid-column: 1 / -1; min-height: 0; padding: 55px 0 40px; }
+  .office-gallery { grid-auto-rows: 220px; }
   .therapist-grid { grid-template-columns: repeat(2, 1fr); row-gap: 50px; }
 }
 
@@ -917,6 +985,7 @@ footer > p {
   .mission-section { grid-template-columns: 1fr; }
   .mission-art { min-height: 480px; }
   .mission-copy { padding: 68px 24px; }
+  .office-gallery { grid-auto-rows: 230px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .section-heading { align-items: flex-start; flex-direction: column; gap: 25px; }
   .approach-section { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: 1fr; }
@@ -950,7 +1019,10 @@ footer > p {
   .mission-circle { height: 290px; left: 1%; width: 290px; }
   .mission-arch { height: 300px; left: 26%; width: 230px; }
   .mission-leaf { height: 88px; width: 46px; }
-  .therapists-section, .process-section, .faq-section, .approach-section, .contact-section { padding-left: 20px; padding-right: 20px; }
+  .office-section, .therapists-section, .process-section, .faq-section, .approach-section, .contact-section { padding-left: 20px; padding-right: 20px; }
+  .office-heading { margin-bottom: 34px; }
+  .office-gallery { grid-auto-rows: 230px; grid-template-columns: 1fr; }
+  .office-photo:first-child { grid-column: auto; grid-row: auto; }
   .therapist-grid { grid-template-columns: 1fr; }
   .approach-list span { font-size: 1rem; padding: 9px 15px 10px; }
   .contact-actions { align-items: flex-start; flex-direction: column; }
