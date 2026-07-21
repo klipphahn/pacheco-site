@@ -29,7 +29,12 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
       type: "website",
       url: baseUrl,
-      images: [{ url: "/og.png", width: 1731, height: 909, alt: "Root to Rise Therapy" }],
+      images: [{
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Root to Rise Marriage Family Therapy Inc. logo",
+      }],
     },
     twitter: {
       card: "summary_large_image",
