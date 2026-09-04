@@ -651,7 +651,7 @@ blockquote {
   transform: scale(1.02);
 }
 
-.therapist-photo-wrap a {
+.profile-arrow {
   align-items: center;
   background: rgba(251, 252, 248, 0.93);
   border-radius: 50%;
@@ -662,6 +662,12 @@ blockquote {
   position: absolute;
   right: 16px;
   width: 46px;
+}
+
+.therapist-photo-wrap:focus-visible,
+.therapist-card h3 a:focus-visible {
+  outline: 3px solid var(--lavender);
+  outline-offset: 4px;
 }
 
 .therapist-card h3 {
@@ -768,6 +774,146 @@ blockquote {
   color: var(--ink-soft);
   font-size: 0.86rem;
   max-width: 330px;
+}
+
+.payment-section {
+  align-items: start;
+  background: var(--sky);
+  display: grid;
+  gap: clamp(50px, 9vw, 140px);
+  grid-template-columns: 0.8fr 1.2fr;
+  padding: clamp(80px, 9vw, 140px) clamp(24px, 6vw, 96px);
+}
+
+.payment-intro > p:not(.eyebrow) {
+  color: var(--ink-soft);
+  margin-bottom: 30px;
+  max-width: 570px;
+}
+
+.insurance-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.insurance-list span {
+  border-top: 1px solid var(--line);
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  padding: 16px 20px 16px 0;
+}
+
+.profile-header {
+  grid-template-columns: 1fr auto 1fr;
+}
+
+.back-link {
+  font-size: 0.78rem;
+  font-weight: 650;
+}
+
+.profile-hero {
+  display: grid;
+  grid-template-columns: minmax(340px, 0.85fr) minmax(0, 1.15fr);
+  min-height: 670px;
+}
+
+.profile-portrait {
+  background: var(--mist);
+  min-height: 670px;
+}
+
+.profile-portrait img {
+  filter: saturate(0.82) contrast(0.97);
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.profile-copy {
+  align-self: center;
+  padding: clamp(70px, 10vw, 150px) clamp(30px, 9vw, 150px);
+}
+
+.profile-copy h1 {
+  font-size: clamp(3.7rem, 6vw, 7.2rem);
+  margin-bottom: 18px;
+}
+
+.profile-credential {
+  color: var(--lavender);
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.profile-focus {
+  color: var(--ink-soft);
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
+  line-height: 1.45;
+  margin: 30px 0 38px;
+  max-width: 650px;
+}
+
+.profile-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.secondary-profile-button {
+  align-items: center;
+  border: 1px solid var(--line);
+  display: inline-flex;
+  font-size: 0.84rem;
+  font-weight: 700;
+  gap: 24px;
+  min-height: 56px;
+  padding: 0 24px;
+}
+
+.profile-office {
+  background: #f3f5f0;
+  padding: clamp(80px, 9vw, 140px) clamp(24px, 6vw, 96px);
+}
+
+.profile-office-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.profile-office-grid.photos-1 {
+  grid-template-columns: minmax(0, 900px);
+}
+
+.profile-office-grid a {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.profile-office-grid img {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 400ms ease;
+  width: 100%;
+}
+
+.profile-office-grid a:hover img,
+.profile-office-grid a:focus-visible img {
+  transform: scale(1.02);
+}
+
+.profile-contact {
+  background: var(--coastal);
+  padding: clamp(80px, 9vw, 130px) clamp(24px, 6vw, 96px);
+}
+
+.profile-contact h2 {
+  margin-bottom: 18px;
 }
 
 .faq-section {
@@ -920,6 +1066,8 @@ footer > p {
   .care-intro { grid-column: 1 / -1; min-height: 0; padding: 55px 0 40px; }
   .office-gallery { grid-auto-rows: 220px; }
   .therapist-grid { grid-template-columns: repeat(2, 1fr); row-gap: 50px; }
+  .profile-header { grid-template-columns: 1fr auto; }
+  .profile-header .back-link { display: none; }
 }
 
 @media (max-width: 820px) {
@@ -951,7 +1099,11 @@ footer > p {
   .process-grid li + li { border-left: 0; padding-left: 0; }
   .process-grid h3 { margin-top: 30px; }
   .faq-section { grid-template-columns: 1fr; }
+  .payment-section { grid-template-columns: 1fr; }
   .contact-section { grid-template-columns: 1fr; }
+  .profile-hero { grid-template-columns: 1fr; }
+  .profile-portrait { min-height: 540px; }
+  .profile-copy { padding: 70px 24px; }
   .locations { border-left: 0; border-top: 1px solid rgba(23,59,67,.22); padding-left: 0; padding-top: 38px; }
   footer { grid-template-columns: 1fr; justify-items: start; }
   footer > p { text-align: left; }
@@ -976,7 +1128,7 @@ footer > p {
   .mission-circle { height: 290px; left: 1%; width: 290px; }
   .mission-arch { height: 300px; left: 26%; width: 230px; }
   .mission-leaf { height: 88px; width: 46px; }
-  .office-section, .therapists-section, .process-section, .faq-section, .approach-section, .contact-section { padding-left: 20px; padding-right: 20px; }
+  .office-section, .therapists-section, .process-section, .payment-section, .faq-section, .approach-section, .contact-section, .profile-office, .profile-contact { padding-left: 20px; padding-right: 20px; }
   .office-heading { margin-bottom: 34px; }
   .office-gallery { grid-auto-rows: 230px; grid-template-columns: 1fr; }
   .office-photo:first-child { grid-column: auto; grid-row: auto; }
@@ -984,6 +1136,12 @@ footer > p {
   .approach-list span { font-size: 1rem; padding: 9px 15px 10px; }
   .contact-actions { align-items: flex-start; flex-direction: column; }
   .light-button { width: 100%; }
+  .insurance-list { grid-template-columns: 1fr; }
+  .profile-portrait { min-height: 440px; }
+  .profile-copy h1 { font-size: clamp(3rem, 15vw, 4.5rem); }
+  .profile-actions { align-items: stretch; flex-direction: column; }
+  .secondary-profile-button { justify-content: space-between; }
+  .profile-office-grid { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
