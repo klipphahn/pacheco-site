@@ -1,4 +1,4 @@
-const bookingUrl = "https://www.roottorise-therapy.net/book-online";
+import { bookingUrl, careCreditApplyUrl, clientAccessLinks, insuranceCompanies, therapists } from "./site-data";
 
 const specialties = [
   {
@@ -18,41 +18,6 @@ const specialties = [
   },
 ];
 
-const therapists = [
-  {
-    name: "Jennifer Boss Kinser",
-    credential: "LMFT 137499",
-    focus: "Youth, families, trauma, anxiety, depression, and mood disorders",
-    email: "Jennifer@roottorise-therapy.com",
-    image:
-      "https://static.wixstatic.com/media/c9fb13_61f7d0f373f845c7a610376b1e374c37~mv2.webp/v1/fill/w_720,h_880,al_c,lg_1,q_90/jbo.webp",
-  },
-  {
-    name: "Arthur D. Tolbert Jr.",
-    credential: "LMFT 378862",
-    focus: "Adults, couples, families, adolescents, trauma, and life change",
-    email: "Art@roottorise-therapy.com",
-    image:
-      "https://static.wixstatic.com/media/c9fb13_7c1b432a24374c01a579f13948277e98~mv2.webp/v1/fill/w_720,h_880,al_c,q_90/Art%2BTolbert.webp",
-  },
-  {
-    name: "Angela Pacheco",
-    credential: "LMFT 156676",
-    focus: "Root-focused, strengths-based care centered on your unique story",
-    email: "Angela@roottorise-therapy.com",
-    image:
-      "https://static.wixstatic.com/media/c9fb13_62c0ba2fde14407fa2bd36b00d411040~mv2.webp/v1/fill/w_720,h_880,al_c,q_90/thumbnail_Outlook-Image.webp",
-  },
-  {
-    name: "Jasmine Olvera",
-    credential: "LMFT 146988 · Bilingual",
-    focus: "Grief, families, life transitions, and patterns that no longer serve you",
-    email: "Jasmine@roottorise-therapy.com",
-    image:
-      "https://static.wixstatic.com/media/c9fb13_6e0f901f7bae4b609ccf4f28ebb74950~mv2.webp/v1/fill/w_720,h_880,al_c,q_90/IMG_3179.webp",
-  },
-];
-
 const approaches = [
   "ACT",
   "Art Therapy",
@@ -62,6 +27,7 @@ const approaches = [
   "Family Systems",
   "Gottman Method",
   "IFS",
+  "Ketamine Assistance Psychotherapy (KAP)",
   "Narrative Therapy",
   "Play Therapy",
   "Psychodynamic Therapy",
@@ -70,15 +36,8 @@ const approaches = [
 ];
 
 const officePhotos = [
-  { src: "/office/office-counseling-room-1.jpg", alt: "Comfortable therapy room with a leather sofa, armchairs, and ocean artwork" },
-  { src: "/office/office-counseling-room-2.jpg", alt: "Warm therapy room with leather chairs, plants, and colorful artwork" },
-  { src: "/office/office-counseling-room-3.jpg", alt: "Inviting therapy room with a green sofa, soft lighting, and nature artwork" },
-  { src: "/office/office-counseling-room-4.jpg", alt: "Spacious counseling room arranged for comfortable conversation" },
-  { src: "/office/office-counseling-room-5.jpg", alt: "Sunlit counseling room with a sofa, armchair, plants, and a desk" },
-  { src: "/office/office-counseling-room-6.jpg", alt: "Private therapy office with natural light and comfortable seating" },
   { src: "/office/office-waiting-area.jpg", alt: "Root to Rise Therapy waiting area with orange chairs, plants, and nature artwork" },
   { src: "/office/office-hallway.jpg", alt: "Bright hallway leading to private therapy offices" },
-  { src: "/office/office-reception-area.jpg", alt: "Welcoming reception area with comfortable seating and warm fall colors" },
 ];
 
 function Arrow() {
@@ -102,6 +61,7 @@ export default function Home() {
           <a href="#therapists">Our therapists</a>
           <a href="#office">Our space</a>
           <a href="#approach">Our approach</a>
+          <a href="#client-access">Client access</a>
           <a href="#contact">Contact</a>
         </nav>
 
@@ -116,6 +76,7 @@ export default function Home() {
             <a href="#therapists">Our therapists</a>
             <a href="#office">Our space</a>
             <a href="#approach">Our approach</a>
+            <a href="#client-access">Client access</a>
             <a href="#contact">Contact</a>
             <a href={bookingUrl}>Book online</a>
           </nav>
@@ -141,20 +102,14 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hero-art" aria-label="Abstract illustration symbolizing support and growth" role="img">
-          <div className="portrait-shape">
-            <span className="portrait-head" />
-            <span className="portrait-body" />
-            <span className="portrait-shadow" />
-          </div>
-          <div className="growth-line" aria-hidden="true">
-            <i /><i /><i />
-          </div>
-          <div className="promise-card">
-            <small>Our promise</small>
-            <p>A space to feel heard, supported, and fully yourself.</p>
-            <span aria-hidden="true">~</span>
-          </div>
+        <div className="hero-brand">
+          <img
+            className="hero-logo"
+            src="/brand/root-to-rise-logo.png"
+            alt="Root to Rise Marriage Family Therapy Inc."
+            width={1400}
+            height={800}
+          />
         </div>
       </section>
 
@@ -240,16 +195,20 @@ export default function Home() {
         <div className="therapist-grid">
           {therapists.map((therapist) => (
             <article className="therapist-card" key={therapist.name}>
-              <div className="therapist-photo-wrap">
+              <a
+                className="therapist-photo-wrap"
+                href={`/therapists/${therapist.slug}`}
+                aria-label={`View ${therapist.name}'s profile`}
+              >
                 <img
                   src={therapist.image}
                   alt={`${therapist.name}, marriage and family therapist`}
                 />
-                <a href={`mailto:${therapist.email}`} aria-label={`Email ${therapist.name}`}>
+                <span className="profile-arrow" aria-hidden="true">
                   <Arrow />
-                </a>
-              </div>
-              <h3>{therapist.name}</h3>
+                </span>
+              </a>
+              <h3><a href={`/therapists/${therapist.slug}`}>{therapist.name}</a></h3>
               <p className="credential">{therapist.credential}</p>
               <p>{therapist.focus}</p>
             </article>
@@ -287,6 +246,43 @@ export default function Home() {
         </ol>
       </section>
 
+      <section className="client-access-section" id="client-access" aria-labelledby="client-access-title">
+        <h2 id="client-access-title">Client access links</h2>
+        <div className="client-access-grid">
+          {clientAccessLinks.map((link) => (
+            <a className="client-access-link" href={link.url} key={link.url} target="_blank" rel="noopener noreferrer">
+              <h3>{link.title}</h3>
+              <p>{link.description}</p>
+              <span className="client-access-action">{link.action} <Arrow /></span>
+              <span className="external-link-note">Opens in a new tab</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section className="payment-section" aria-labelledby="payment-title">
+        <div className="payment-intro">
+          <p className="eyebrow">Payment &amp; insurance</p>
+          <h2 id="payment-title">More ways to access care.</h2>
+          <p>
+            Coverage varies by therapist and plan. Please contact our team to
+            confirm eligibility, benefits, and current participation before
+            your first appointment.
+          </p>
+          <a
+            className="primary-button"
+            href={careCreditApplyUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Apply for a CareCredit Card <Arrow />
+          </a>
+        </div>
+        <div className="insurance-list" aria-label="Insurance companies accepted by members of our team">
+          {insuranceCompanies.map((company) => <span key={company}>{company}</span>)}
+        </div>
+      </section>
+
       <section className="faq-section" aria-labelledby="faq-title">
         <div>
           <p className="eyebrow">Good to know</p>
@@ -299,7 +295,7 @@ export default function Home() {
           </details>
           <details>
             <summary>Where are your offices?</summary>
-            <p>We have two Modesto locations: 627 13th Street, Suite E, and 4641 Spyres Way, Suite 4.</p>
+            <p>Our office is at 4641 Spyres Way, Suite 4, Modesto, CA 95356.</p>
           </details>
           <details>
             <summary>Is therapy confidential?</summary>
@@ -322,16 +318,12 @@ export default function Home() {
           </p>
           <div className="contact-actions">
             <a className="light-button" href={bookingUrl}>Book online <Arrow /></a>
-            <a className="contact-link" href="tel:+12096458630">209-645-8630 ext. 100</a>
+            <a className="contact-link" href="tel:+12094902870">209-490-2870</a>
             <a className="contact-link" href="mailto:Admin@roottorise-therapy.com">Admin@roottorise-therapy.com</a>
           </div>
         </div>
         <div className="locations">
           <p className="eyebrow">Modesto office locations</p>
-          <address>
-            <strong>Downtown</strong>
-            627 13th Street, Suite E<br />Modesto, CA 95354
-          </address>
           <address>
             <strong>North Modesto</strong>
             4641 Spyres Way, Suite 4<br />Modesto, CA 95356
